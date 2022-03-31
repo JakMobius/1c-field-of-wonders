@@ -13,6 +13,9 @@ export class ServerClient {
     }
 
     setWord(word: string) {
+        if(word.length > this.attempts) {
+            this.attempts = word.length;
+        }
         this.word = word
         this.guessed = Array(word.length).fill(false)
     }
@@ -55,6 +58,18 @@ export class ServerClient {
         })
     }
 
+    allGuessed(): boolean {
+        for(let guess of this.guessed) {
+            if(!guess) return false
+        }
+        return true
+    }
+
+    sendWin() {
+        this.sendMessage("You've guessed the word '" + this.word + "', congratulations!")
+        this.disconnect();
+    }
+
     checkGuessedLetter(letter: string) {
         let index = this.word.indexOf(letter)
         if(index == -1) {
@@ -69,14 +84,17 @@ export class ServerClient {
                 this.guessed[index] = true;
                 index = this.word.indexOf(letter, index + 1)
             }
-            this.loseAttempt();
+            if(this.allGuessed()) {
+                this.sendWin();
+            } else {
+                this.loseAttempt();
+            }
         }
     }
 
     checkGuessedWord(word: string) {
         if(this.word == word) {
-            this.sendMessage("You've guessed the word '" + word + "', congratulations!")
-            this.disconnect();
+            this.sendWin();
         } else {
             this.sendMessage("'" + word + "' is not the word.")
             this.loseAttempt();

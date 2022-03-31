@@ -1,6 +1,6 @@
 {
   "port": 8476,
-  "attempts": 10,
+  "attempts": 16,
   "useWebGenerator": true,
   "localWords": [
     "зона",
