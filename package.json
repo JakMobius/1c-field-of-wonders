@@ -1,0 +1,33 @@
+{
+  "name": "1c-field-of-wonders",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "run-server": "node dist/server.js",
+    "run-client": "node dist/client.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JakMobius/1c-field-of-wonders.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/JakMobius/1c-field-of-wonders/issues"
+  },
+  "homepage": "https://github.com/JakMobius/1c-field-of-wonders#readme",
+  "devDependencies": {
+    "@babel/plugin-transform-runtime": "^7.15.0",
+    "@babel/plugin-transform-typescript": "^7.15.0",
+    "@types/node": "^14.14.17",
+    "@types/websocket": "^1.0.1",
+    "beelder": "^0.0.17",
+    "canvas": "^2.6.1",
+    "source-map-support": "^0.5.19",
+    "typescript": "3.9"
+  },
+  "dependencies": {
+    "websocket": "^1.0.34"
+  }
+}
